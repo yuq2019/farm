@@ -1,10 +1,12 @@
 <template>
- <div>
+ <div class="container">
+     <!--头部-->
    <van-nav-bar title="首页" class="nav-title">
        <van-icon name="search" slot="left"></van-icon>
        <van-icon name="cart" slot="right"></van-icon>
    </van-nav-bar>
 
+    <!--轮播图-->
    <div class="lunbo">
        <van-swipe :autoplay="5000">
          <van-swipe-item  class="lunbo-item" v-for="(item,index) in lunboItem" :key="index">
@@ -13,6 +15,7 @@
        </van-swipe>
    </div>
 
+    <!--热门商品-->
    <div>
        <div class="hot">
            <p class="hot-title">热门商品</p>
@@ -27,12 +30,27 @@
            </swiper>
        </div>
    </div>
+
+    <!--推荐-->
+    <div class="like">
+        <p>猜你喜欢</p>
+            <ul>
+                <li class="like-item" v-for="(item,index) in likeItem" :key="index">
+                    <img :src="item.img" alt="">
+                    <p>{{item.name}}</p>
+                    <p>${{item.price}}</p>
+                </li>
+                
+            </ul>
+    </div>
+
  </div>
 </template>
 
 <script>
 import 'swiper/dist/css/swiper.css'
 import { swiper, swiperSlide } from 'vue-awesome-swiper'
+import axios from 'axios'
 
 export default {
   data(){
@@ -105,13 +123,71 @@ export default {
           ],
           swiperOption:{
             slidesPerView:3
-  }
+          },
+          likeItem:[
+               {
+                  "name":"xx1",
+                  "img":'https://img1.qjy168.com/thumb.php?f=provide/2019/01/08/5874122_20190108151329.jpg&w=300&h=200',
+                  "price":"1000",
+                  "componey":"fff",
+                  "city":"ggg"
+              }, {
+                  "name":"xx1",
+                  "img":'https://img1.qjy168.com/thumb.php?f=provide/2019/01/08/5874122_20190108151329.jpg&w=300&h=200',
+                  "price":"1000",
+                  "componey":"fff",
+                  "city":"ggg"
+              },{
+                  "name":"xx1",
+                  "img":'https://img1.qjy168.com/thumb.php?f=provide/2019/01/08/5874122_20190108151329.jpg&w=300&h=200',
+                  "price":"1000",
+                  "componey":"fff",
+                  "city":"ggg"
+              }, {
+                  "name":"xx1",
+                  "img":'https://img1.qjy168.com/thumb.php?f=provide/2019/01/08/5874122_20190108151329.jpg&w=300&h=200',
+                  "price":"1000",
+                  "componey":"fff",
+                  "city":"ggg"
+              }, {
+                  "name":"xx1",
+                  "img":'https://img1.qjy168.com/thumb.php?f=provide/2019/01/08/5874122_20190108151329.jpg&w=300&h=200',
+                  "price":"1000",
+                  "componey":"fff",
+                  "city":"ggg"
+              }, {
+                  "name":"xx1",
+                  "img":'https://img1.qjy168.com/thumb.php?f=provide/2019/01/08/5874122_20190108151329.jpg&w=300&h=200',
+                  "price":"1000",
+                  "componey":"fff",
+                  "city":"ggg"
+              },{
+                  "name":"xx1",
+                  "img":'https://img1.qjy168.com/thumb.php?f=provide/2019/01/08/5874122_20190108151329.jpg&w=300&h=200',
+                  "price":"1000",
+                  "componey":"fff",
+                  "city":"ggg"
+              }, {
+                  "name":"xx1",
+                  "img":'https://img1.qjy168.com/thumb.php?f=provide/2019/01/08/5874122_20190108151329.jpg&w=300&h=200',
+                  "price":"1000",
+                  "componey":"fff",
+                  "city":"ggg"
+              },
+
+          ]
       }
   },
   components: {
     swiper,
     swiperSlide
   },
+  created(){
+      let url1='http://www.weichuang.com/getList';
+      axios.get(url1).then(res=>{
+          console.log(res);
+      });
+  }
   
   
 }
@@ -119,7 +195,7 @@ export default {
 
 <style lang="scss">
 
-
+//轮播图样式
   .lunbo{
       height: 4rem;
       &-item{
@@ -130,7 +206,10 @@ export default {
       }
   }
 
+//热门商品样式
   .hot{
+      margin-top:0.2rem;
+      background: #ffffff;
       &-title{
           width:100%;
           height:0.5rem;
@@ -143,15 +222,41 @@ export default {
        &-content{
           width:2rem;
           text-align: center;
-          height: 2rem;
+          height: 2.5rem;
       }
   }
   }
 
+//导航标题样式
  .nav-title{
      position: fixed;
      width:100%;
      top:0;
+     z-index:10!important;
  }
   
+ //导航加背景灰 
+  .container{
+      background: #eeeeee;
+  }
+
+  //猜你喜欢样式
+  .like{
+      margin-top:0.2rem;
+      background: #ffffff;
+      text-align: center;
+      margin-bottom: 1rem;
+      ul{
+          display: flex;
+          flex-wrap:wrap;//换行
+          justify-content: space-around;
+      }
+      &-item{
+          flex-basis: 40%;
+      }
+      img{
+          width:2rem;
+          height:2rem;
+      }
+  }
 </style>
