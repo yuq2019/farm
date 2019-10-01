@@ -1,6 +1,6 @@
 <template>
  <div>
-   <van-nav-bar title="首页">
+   <van-nav-bar title="首页" class="nav-title">
        <van-icon name="search" slot="left"></van-icon>
        <van-icon name="cart" slot="right"></van-icon>
    </van-nav-bar>
@@ -15,17 +15,16 @@
 
    <div>
        <div class="hot">
-           <p>热门商品</p>
-           <swipe class="hot-swiper">
-               <swiper-slide v-for="(item,index) in hotProduces" :key="index">
+           <p class="hot-title">热门商品</p>
+           <swiper class="hot-swiper" :options="swiperOption">
+               <swiper-slide v-for="(item,index) in hotProduces" :key="index" >
                    <div class="hot-swiper-content">
                        <img :src="item.img" alt="">
                        <div>{{item.name}}</div>
-                       <div>{{item.price}}</div>
-
+                       <div>${{item.price}}</div>
                    </div>
                </swiper-slide>
-           </swipe>
+           </swiper>
        </div>
    </div>
  </div>
@@ -103,16 +102,24 @@ export default {
                   "componey":"fff",
                   "city":"ggg"
               },
-          ]
+          ],
+          swiperOption:{
+            slidesPerView:3
+  }
       }
   },
   components: {
     swiper,
     swiperSlide
-  }
+  },
+  
+  
 }
 </script>
+
 <style lang="scss">
+
+
   .lunbo{
       height: 4rem;
       &-item{
@@ -122,4 +129,29 @@ export default {
           }
       }
   }
+
+  .hot{
+      &-title{
+          width:100%;
+          height:0.5rem;
+          padding-left: 0.2rem;
+          line-height: 0.5rem;
+          box-sizing: border-box;
+      }
+      
+      &-swiper{
+       &-content{
+          width:2rem;
+          text-align: center;
+          height: 2rem;
+      }
+  }
+  }
+
+ .nav-title{
+     position: fixed;
+     width:100%;
+     top:0;
+ }
+  
 </style>
