@@ -1,6 +1,5 @@
 import Mock from 'mockjs'
-import data from './data.json'
-Mock.mock('http://www.weichuang.com/getList',{data: data.list});
+
 
 let Random=Mock.Random;
 let productData=req=>{
@@ -8,7 +7,13 @@ let productData=req=>{
     for(let i=0;i<100;i++){
         let product={
             name:Random.ctitle(5,20),
-            img:Random.dataImage('100*100','农机'+Random.integer())
-        }
+            img:Random.dataImage(),
+            price:Random.integer(1000,10000),
+            owner:Random.cname()      
+        };
+        productList.push(product);
+        
     }
+    return productList
 }
+Mock.mock('http://www.a.com/getLikeItem',productData)

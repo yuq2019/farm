@@ -51,6 +51,7 @@
 import 'swiper/dist/css/swiper.css'
 import { swiper, swiperSlide } from 'vue-awesome-swiper'
 import axios from 'axios'
+import url from '@/service.config.js'
 
 export default {
   data(){
@@ -125,55 +126,7 @@ export default {
             slidesPerView:3
           },
           likeItem:[
-               {
-                  "name":"xx1",
-                  "img":'https://img1.qjy168.com/thumb.php?f=provide/2019/01/08/5874122_20190108151329.jpg&w=300&h=200',
-                  "price":"1000",
-                  "componey":"fff",
-                  "city":"ggg"
-              }, {
-                  "name":"xx1",
-                  "img":'https://img1.qjy168.com/thumb.php?f=provide/2019/01/08/5874122_20190108151329.jpg&w=300&h=200',
-                  "price":"1000",
-                  "componey":"fff",
-                  "city":"ggg"
-              },{
-                  "name":"xx1",
-                  "img":'https://img1.qjy168.com/thumb.php?f=provide/2019/01/08/5874122_20190108151329.jpg&w=300&h=200',
-                  "price":"1000",
-                  "componey":"fff",
-                  "city":"ggg"
-              }, {
-                  "name":"xx1",
-                  "img":'https://img1.qjy168.com/thumb.php?f=provide/2019/01/08/5874122_20190108151329.jpg&w=300&h=200',
-                  "price":"1000",
-                  "componey":"fff",
-                  "city":"ggg"
-              }, {
-                  "name":"xx1",
-                  "img":'https://img1.qjy168.com/thumb.php?f=provide/2019/01/08/5874122_20190108151329.jpg&w=300&h=200',
-                  "price":"1000",
-                  "componey":"fff",
-                  "city":"ggg"
-              }, {
-                  "name":"xx1",
-                  "img":'https://img1.qjy168.com/thumb.php?f=provide/2019/01/08/5874122_20190108151329.jpg&w=300&h=200',
-                  "price":"1000",
-                  "componey":"fff",
-                  "city":"ggg"
-              },{
-                  "name":"xx1",
-                  "img":'https://img1.qjy168.com/thumb.php?f=provide/2019/01/08/5874122_20190108151329.jpg&w=300&h=200',
-                  "price":"1000",
-                  "componey":"fff",
-                  "city":"ggg"
-              }, {
-                  "name":"xx1",
-                  "img":'https://img1.qjy168.com/thumb.php?f=provide/2019/01/08/5874122_20190108151329.jpg&w=300&h=200',
-                  "price":"1000",
-                  "componey":"fff",
-                  "city":"ggg"
-              },
+              
 
           ]
       }
@@ -183,9 +136,10 @@ export default {
     swiperSlide
   },
   created(){
-      let url1='http://www.weichuang.com/getList';
+      let url1=url.getLikeItem;
       axios.get(url1).then(res=>{
           console.log(res);
+          this.likeItem=res.data;
       });
   }
   
