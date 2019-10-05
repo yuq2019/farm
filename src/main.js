@@ -10,8 +10,8 @@ import '@/assets/js/rem.js'
 import '@/mock/mock.js'
 Vue.config.productionTip = false
 
-import { NavBar,Icon,Tabbar, TabbarItem,Swipe, SwipeItem,Lazyload} from 'vant';
-Vue.use(NavBar).use(Icon).use(Tabbar).use(TabbarItem).use(Swipe).use(SwipeItem).use(Lazyload);
+import { Button,CellGroup,Field,Tab,Tabs,NavBar,Icon,Tabbar, TabbarItem,Swipe, SwipeItem,Lazyload} from 'vant';
+Vue.use(Button).use(CellGroup).use(Field).use(Tab).use(Tabs).use(NavBar).use(Icon).use(Tabbar).use(TabbarItem).use(Swipe).use(SwipeItem).use(Lazyload);
 
 new Vue({
   router,
